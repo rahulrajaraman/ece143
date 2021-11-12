@@ -1,0 +1,75 @@
+import calendar
+days = {0:'Monday', 1:'Tuesday', 2:'Wednesday', 3:'Thursday', 4:'Friday', 5:'Saturday', 6 : 'Sunday'}
+
+def number_of_days(year,month):
+    '''
+    Parameters
+    ----------
+    year : int
+        calendar year
+    month : int
+        months are from 1-12
+
+    Returns
+    -------
+    int
+        number of days in that month
+
+    '''
+    
+    assert isinstance(month,int) and isinstance(year,int)
+    assert 0<month<13
+    assert year>0
+    return calendar.monthrange(year,month)[1]
+    
+    
+def number_of_leap_years(year1,year2):
+    '''
+    Parameters
+    ----------
+    year1 : int
+        lower bound
+    year2 : int
+        higher bound
+
+    Returns
+    -------
+    int
+        the number of leap years exclusive of higher bound
+
+    '''
+    assert isinstance(year1,int) and isinstance(year2,int)
+    assert year1<year2
+    assert year1>0 and year2>0
+    return calendar.leapdays(year1,year2)
+        
+def get_day_of_week(year,month,day):
+    '''
+    Parameters
+    ----------
+    year : int
+        calender year
+    month : int
+        calender month (1-12)
+    day : int
+        date (1-31) not for all. will give assertion error if date isn not valid for month
+
+    Returns
+    -------
+    TYPE
+        string
+
+    '''
+      
+    assert isinstance(month,int) and isinstance(year,int) and isinstance(day,int)
+    assert 0<month<13
+    assert 0<=day<=31
+    assert year>0
+    
+    try:
+        return days[calendar.weekday(year,month,day)]
+    except ValueError:
+        assert False,   "Value of date not in range of month "
+        
+        
+

@@ -1,0 +1,5 @@
+import itertools
+
+def get_sample(nbits = 3, prob = p, n = 4):
+    x = nbits*'0' + nbits*'1'
+    itertools.permutations()
